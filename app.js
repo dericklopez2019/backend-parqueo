@@ -6,11 +6,13 @@ const ClienteModel = require('./models/cliente.model');
 const VehiculoModel = require('./models/vehiculo.model');
 const AccesoModel = require('./models/acceso.model');
 const EspacioModel = require('./models/espacio.model');
+const TipoVehiculoModel = require('./models/tipo_vehiculo.model');
 
 const rutasClientes = require('./routes/cliente.routes');
 const rutasVehiculos = require('./routes/vehiculo.routes');
 const rutasAccesos = require('./routes/acceso.routes');
 const rutasEspacios = require('./routes/espacio.routes');
+const rutasTiposVehiculo = require('./routes/tipo_vehiculo.routes');
 
 const app = express()
 app.use(express.json())
@@ -20,6 +22,7 @@ app.use('/api', rutasClientes);
 app.use('/api', rutasVehiculos);
 app.use('/api', rutasAccesos);
 app.use('/api', rutasEspacios);
+app.use('/api', rutasTiposVehiculo);
 
 sequelize.sync().then(() => {
   app.listen(3001, () => {
