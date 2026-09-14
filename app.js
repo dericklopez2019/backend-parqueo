@@ -2,15 +2,14 @@ const express = require('express');
 require('dotenv').config();
 
 const sequelize = require('./db/db')
-
+const ClienteModel = require('./models/cliente.model');
+const rutasClientes = require('./routes/cliente.routes');
 
 const app = express()
 app.use(express.json())
 
 // Maquetar las rutas
-app.use('/', (req, res) => {
-  res.send('API del parqueo funcionando');
-});
+app.use('/api', rutasClientes);
 
 sequelize.sync().then(() => {
   app.listen(3001, () => {
